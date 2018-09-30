@@ -1,4 +1,4 @@
-package io.github.hun10.codegen.annotations;
+package io.github.hun10.codegen;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

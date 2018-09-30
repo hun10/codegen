@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
@@ -18,8 +19,8 @@ import javax.tools.FileObject;
 import javax.tools.StandardLocation;
 
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes("io.github.hun10.codegen.annotations.Processor")
-public class Processor extends AbstractProcessor {
+@SupportedAnnotationTypes("io.github.hun10.codegen.Processor")
+public class ProcessorsRegistrar extends AbstractProcessor {
     private final Set<Name> processors = new HashSet<>();
 
     @Override
@@ -47,7 +48,7 @@ public class Processor extends AbstractProcessor {
         return processingEnv.getFiler().createResource(
                 StandardLocation.CLASS_OUTPUT,
                 "",
-                "META-INF/services/javax.annotation.processing.Processor"
+                "META-INF/services/" + Processor.class.getName()
         );
     }
 }
